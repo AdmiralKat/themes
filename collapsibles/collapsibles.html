@@ -1,0 +1,27 @@
+<div class="collapsible">
+	<p class="clpbutton">Click to open the collapsible</p>
+	<div class="clpcontent">
+		<p>Collapsible content goes here. Add any HTML you want!</p>
+	</div>
+</div>
+
+<script>
+// Close all collapsible sections on initial pageload
+$(".collapsible .clpcontent").hide();
+
+// Make nested collapsibles have alternating backgrounds
+$(".collapsible").each( function() {
+	if ($(this).parent(".clpcontent").parent(".collapsible").hasClass("odd")) {
+		$(this).addClass("even")
+	}
+	else { $(this).addClass("odd") }
+});
+
+// Click to collapse functionality
+$(".collapsible > .clpbutton").click( function() {
+	var collapsible = $(this).parent();
+	var content = $(this).next();
+	content.slideToggle();
+	collapsible.toggleClass("active");
+});
+</script>
